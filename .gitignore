@@ -1,0 +1,13 @@
+# Laravel
+/vendor
+/node_modules
+.env
+/storage/*.key
+
+# Vue / Vite
+node_modules
+dist
+.env
+
+# OS
+.DS_Store
