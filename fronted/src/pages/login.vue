@@ -35,6 +35,7 @@
 import Axios  from 'axios';
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { loggedin } from '@/auth';
 
 const router = useRouter()
 
@@ -59,10 +60,12 @@ function submitform(){
  Axios.post('http://localhost:8000/api/login', formdata)
                     .then(response => {
                         console.log("success");
-                        console.log(response.data.token);
                         localStorage.setItem('token', response.data.token);
-
+                        localStorage.setItem('role',response.data.role);
+                        loggedin.value = true
                         router.push('/home');
+                        
+
                     })
                     .catch(error => {
                         errorreturn.value = error.response.data.message

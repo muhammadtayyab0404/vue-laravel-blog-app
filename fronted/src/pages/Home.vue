@@ -2,9 +2,12 @@
 <template>
   <div class="container">
     <div class="page-header">
-      <h1 class="page-title">Blog Posts</h1>
-      <button @click="$router.push('/addpost')" class="btn btn-primary">Add Post</button>
-    </div>
+        <h1 class="page-title">Blog Posts</h1>
+        <div class="actions">
+          <button  @click="$router.push('/addpost')" class="btn btn-primary">Add Post</button>
+          <button v-if="role == 'admin'" @click="$router.push('/users')" class="btn btn-primary">Users</button>
+        </div>
+      </div>
 
     <showrepeat :postsdataa="posts" />
   </div>
@@ -22,7 +25,7 @@ components: {
 
  data() {
   return {
-
+    role: '',
     posts: []  
   }
 },
@@ -36,7 +39,7 @@ mounted() {
 })
   .then(response => {
    this.posts = response.data; 
-    console.log(this.posts);
+   this.role = localStorage.getItem('role')
  }).catch(error => {
             console.log(error);
         });
@@ -44,3 +47,19 @@ mounted() {
 }
 }
 </script>
+
+<style scoped>
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* title left, actions right */
+  gap: 12px;
+}
+.actions {
+  display: flex;
+  gap: 8px; /* space between buttons */
+}
+.page-title {
+  margin: 0; /* ensure title doesn't add extra vertical spacing */
+}
+</style>

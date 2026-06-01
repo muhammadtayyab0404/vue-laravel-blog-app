@@ -28,7 +28,16 @@ Route::post('/posts/{post}/comments', [CommentController::class, 'addComment']);
 
 Route::post('/logout', [UserController::class, 'logout']);
 
+Route::middleware(['Admincheck'])->group(function () {
+Route::get('/alluser', [UserController::class, 'alluser']);
+Route::get('/user/{id}', [UserController::class, 'getUser']);
+Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
+Route::put('/user/{id}', [UserController::class, 'editUser']);
 
+Route::post('/posts/admin/adduser', [UserController::class, 'adduser']);
+
+
+});
 
 });
 

@@ -7,6 +7,11 @@ import editPost from '../pages/editPost.vue'
 import deletePost from '../pages/deletePost.vue'
 import login from '../pages/login.vue'
 import register from '../pages/register.vue'
+import listuser from '../admin/listuser.vue'
+import deleteuser from '../admin/deleteuser.vue'
+import edituser from  '../admin/EditUser.vue'
+import AddUser from '@/admin/AddUser.vue'
+
 
 const routes = [
   {
@@ -41,6 +46,26 @@ const routes = [
     path: '/deletepost/:id',
     component: deletePost
   },
+
+  {
+    path: '/users',
+    component: listuser
+  },
+  {
+    path: '/deleteuser/:id',
+    component: deleteuser
+  },
+  {
+    path: '/edituser/:id',
+    component: edituser
+  },
+
+  {
+    path: '/admin/adduser',
+    component: AddUser
+  },
+
+  
 
 ]
 
