@@ -21,6 +21,7 @@ Route::get('/testusers', function () {
 });
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    
 Route::apiResource('posts', PostController::class);
 
 Route::get('/posts/{post}/comments', [CommentController::class, 'showcomments']);

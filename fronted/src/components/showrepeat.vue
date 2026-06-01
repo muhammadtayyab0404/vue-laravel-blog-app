@@ -2,12 +2,13 @@
     
   <div v-for="(postsdata, index) in postsdataa" :key="postsdata.id" class="post">
 
-    <h2>{{ postsdata.title }} {{ index }}</h2>
+    <h2>{{ postsdata.title }}</h2>
 
     <p>{{ postsdata.content }}</p>
 
     <div class="btn-group">
-      <router-link 
+      
+      <router-link  
         v-if="$route.name !== 'showpost'" 
         :to="'/showpost/' + postsdata.id" 
         class="btn btn-show"
@@ -16,7 +17,7 @@
       </router-link>
 
       <router-link 
-        v-if="$route.name !== 'showpost'" 
+        v-if="$route.name !== 'showpost' && postsdata.can_edit" 
         :to="'/editpost/' + postsdata.id" 
         class="btn btn-edit"
       >
@@ -24,13 +25,17 @@
       </router-link>
 
       <router-link 
-        v-if="$route.name !== 'showpost'" 
+        v-if="$route.name !== 'showpost' && postsdata.can_delete" 
         :to="'/deletepost/' + postsdata.id" 
         class="btn btn-delete"
       >
         Delete
       </router-link>
     </div>
+
+     <p class="username"  >
+    {{postsdata.users.name}}
+  </p>
 
   </div>
 
@@ -114,6 +119,13 @@ export default {
 
 .btn-delete:hover{
     background: #c0392b;
+}
+.username{
+    text-align: right;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+    font-weight: 600;
 }
 
 </style>

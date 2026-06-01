@@ -2,8 +2,10 @@
   <header>
 <h1>My Blog</h1>
   <nav>
-    <router-link to="/">Home</router-link>
+    <router-link v-if="loggedin" to="/home">Home</router-link>
+
     <a v-if="loggedin" href="#" @click.prevent="logout">Logout</a>
+  
   </nav>
 </header>
 

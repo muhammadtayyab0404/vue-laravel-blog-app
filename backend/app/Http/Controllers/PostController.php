@@ -4,12 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use App\Policies\PostPolicy;
+use Illuminate\Support\Facades\Gate;
 class PostController extends Controller
 {
     public function index()
     {
-        $query = Post::get();
+
+        $query = Post::with('users')->get();
+      $query->transform( function($query){
+      $query->can_edit=Gate::allows('update',$query);
+      $query->can_delete=Gate::allows('delete',$query);
+      return $query;
+
+      });
+
 
         return response()->json($query);
     }
@@ -19,6 +29,8 @@ class PostController extends Controller
         $post= new Post();
         $post->title = $request->title;
         $post->content = $request->content;
+        $id= Auth::user()->id;
+        $post->user_id = $id;
         $post->save();
 
         return response()->json($post, 201);
@@ -26,7 +38,7 @@ class PostController extends Controller
 
     public function show($id)
     {
-        $post = Post::where('id', $id)->first();
+        $post = Post::where('id', $id)->with('users')->first();
 
         if (!$post) {
             return response()->json(['message' => 'Post not found'], 404);
@@ -37,10 +49,16 @@ class PostController extends Controller
 
     public function update(Request $request, $id)
     {
+        
+        
         $post = Post::where('id', $id)->first();
 
         if (!$post) {
             return response()->json(['message' => 'Post not found'], 404);
+        }
+
+        if(Gate::denies('update', $post)){
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         $post->title = $request->title;
@@ -51,7 +69,18 @@ class PostController extends Controller
     }
 
     public function destroy($id){
+     
+    $postss =Post::where('id', $id)->first();
+
+     if (Gate::denies('delete', $postss)) {
+        return response()->json([
+            'message' => 'Unauthorized'
+        ], 403);
+    }
+        
+
         $post =Post::where('id', $id)->delete();
+
         if($post) {
             return response()->json(['message' => 'Post deleted successfully'], 200);
         }else{
