@@ -1,20 +1,49 @@
 # 🚀 Full Stack Blog Platform (Laravel + Vue.js)
 
-A full-stack blog application built using **Laravel REST API** for the backend and **Vue.js 3** for the frontend. This project demonstrates authentication, CRUD operations, comments system, and protected routes using token-based authentication.
+A full-stack blog application built using **Laravel REST API** for the backend and **Vue.js 3** for the frontend.  
+This project demonstrates authentication, role-based authorization, CRUD operations, comments system, and protected routes using token-based authentication.
 
 ---
 
 ## 📌 Features
 
-- 🔐 User Registration & Login
-- 🪪 Token-Based Authentication (Bearer Token)
-- 📝 Create, Read, Update, Delete Blog Posts
-- 💬 Add & View Comments on Posts
-- 🔒 Protected Routes using Vue Router Guards
-- ⚡ Axios API Integration with Laravel
-- 📡 Dynamic data rendering from REST API
+- 🔐 User Registration & Login  
+- 🪪 Token-Based Authentication (Laravel Sanctum / Bearer Token)  
+- 👥 Role-Based Access Control (Admin, Manager, User)  
+- 📝 Create, Read, Update & Delete Blog Posts  
+- 💬 Add & View Comments on Posts  
+- 🔒 Protected Routes using Vue Router Guards  
+- ⚡ Axios API Integration with Laravel  
+- 📡 Dynamic Data Rendering from REST API  
+- 🧠 Secure authorization using roles & permissions  
 
 ---
+
+## 🧑‍⚖️ Role-Based Access Control (RBAC)
+
+### 👤 User
+- Can create blog posts  
+- Can edit **only their own posts**  
+- Can delete **only their own posts**  
+
+---
+
+### 🧑‍💼 Manager
+- Can create blog posts  
+- Can edit **any user’s posts**  
+- Can delete **any user’s posts**  
+- Focuses on content moderation  
+
+---
+
+### 🛡️ Admin
+- Full system access  
+- Can create new users  
+- Can delete existing users  
+- Can update user roles (User / Manager / Admin)  
+- Can manage all blog posts  
+- Complete control over the system  
+
 
 ## 🛠️ Tech Stack
 
@@ -51,8 +80,8 @@ A full-stack blog application built using **Laravel REST API** for the backend a
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/muhammadtayyab0404/vue-laravel-blog-app
+cd vue-laravel-blog-app
 
 ## Backend Setup (Laravel)
 
