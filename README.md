@@ -69,9 +69,10 @@ This project demonstrates authentication, role-based authorization, CRUD operati
 
 ## ScreenShots
 
-
-<img width="1926" height="1005" alt="Image" src="https://github.com/user-attachments/assets/074b9e80-f365-4cdf-b9d6-0da6691b9e05" />
-<img width="1926" height="1005" alt="Image" src="https://github.com/user-attachments/assets/588def16-c9e9-4dda-98b3-7b5897fd0d55" />
+<img width="1909" height="927" alt="Image" src="https://github.com/user-attachments/assets/04046618-cdfc-4783-848d-5e0b5205e7c2" />
+<img width="1909" height="927" alt="Image" src="https://github.com/user-attachments/assets/240d1af6-45f7-48b9-8cdb-7f146cbe936c" />
+<img width="1909" height="927" alt="Image" src="https://github.com/user-attachments/assets/61521945-3aa8-4d9c-b332-3c23ddb29621" />
+<img width="1909" height="927" alt="Image" src="https://github.com/user-attachments/assets/9bcef4ae-846f-4014-a64c-4415cf90a4f8" />
 <img width="1926" height="1005" alt="Image" src="https://github.com/user-attachments/assets/0da63471-68c9-4414-ab64-40675f011857" />
 <img width="1926" height="1005" alt="Image" src="https://github.com/user-attachments/assets/8a275d71-37ec-4831-9d38-bf19677b834a" />
 <img width="1926" height="1005" alt="Image" src="https://github.com/user-attachments/assets/b75f4c40-4dc7-4bf5-aef8-c88a8c3f031f" />
